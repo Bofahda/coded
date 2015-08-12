@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Cereal List</title>
+		<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+			{% for manufacturer in manufacturers %}
+				<div class="col-xs-6 col-sm-6 col-md-6">
+					<h2 class="manu_title">{{ manufacturer }}</h2>
+
+					{% for cereal in manufacturer.cereal_set.all %}
+						<a href="/cereal_detail/{{ cereal.pk }}/">{{ cereal.cereal_name }}</a></br>
+
+					{% endfor %}
+				<!-- Must close each Loop -->
+				</div>
+			</div>
+			{% endfor %}
+		<!-- Must close each Loop -->
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		$(document).ready( function() {
+			
+			$('body').css('background-color','orange').css('color', 'blue');
+			$('manu_title').css('font-family','Gothic').css('color','black');
+			//$('body').css('background-image','background-repeat', 'no-repeat','url(/static/images/fam_code.png)').css('color', 'blue');
+
+			$('body').append("<img src='/static/images/fam_code.png' />")
+
+			$('body').on('click', function(){
+					$('body').css('background-color', '#CCC');
+			});
+
+		});
+	</script>
+</html>

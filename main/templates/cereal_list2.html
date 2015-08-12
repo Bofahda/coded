@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Cereal List</title>
+</head>
+<!-- we are in cereal_list.html -->
+	<body>
+{% for manufacturer in manufacturer_cereal.items %}
+
+<h2>{{ manufacturer }}</h2>
+
+	{% for cereal in cereals %}
+
+		{{ cereal.name }}</br>
+
+	{% endfor %}
+	<!-- Must close each Loop -->
+
+{% endfor %}
+<!-- Must close each Loop -->
+	</body>
+</html>
